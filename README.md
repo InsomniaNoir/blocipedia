@@ -23,7 +23,3 @@ Created with the assistance of **Jess Rodriguez** through [Bloc.io](http://www.b
 Progress and development tracked using [Trello](https://trello.com/b/S0lFaW3i)
 
 [an: :**insomnia_noir**.development]
-
-
-
-Markdown created using [StackEdit](http://www.stackedit.io)
