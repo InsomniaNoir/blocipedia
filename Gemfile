@@ -37,6 +37,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Gems added for Application
 gem 'devise'
+gem 'pundit'
 gem 'figaro'
 gem 'pry', '~> 0.10.1'
 
@@ -44,7 +45,7 @@ group :production do
   # PostGreSQL
   gem 'pg'
   gem 'rails_12factor'
-  
+
   #Puma Server
   gem 'puma'
 
@@ -59,15 +60,14 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  
+
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  
+
   # Thin Server
   gem 'thin'
-  
+
   # Better Errors
   gem "better_errors"
   gem "binding_of_caller"
 end
-
