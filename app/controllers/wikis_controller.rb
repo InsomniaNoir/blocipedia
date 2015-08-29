@@ -12,7 +12,7 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.build( wiki_params )
+    @wiki = Wiki.new( wiki_params )
     if @wiki.save
       flash[:notice] = "Great success!"
       redirect_to @wiki
@@ -32,6 +32,19 @@ class WikisController < ApplicationController
       flash[:notice] = "Great update success!"
     else
       flash[:error] = "You're not very good at this, are you?"
+    end
+    redirect_to @wiki
+  end
+
+  def destroy
+    @wiki = Wiki.find(params[:id])
+
+    if @wiki.destroy
+      flash[:notice] = "This wiki is no more! It has ceased to be!"
+      redirect_to wikis_path
+    else
+      flash[:error] = "You cannot kill what you did not create!"
+      render :show
     end
   end
 

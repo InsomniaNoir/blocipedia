@@ -11,7 +11,7 @@
   <div class="navbar navbar-inverse">
     <ul class="nav navbar-nav">
       <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Index", root_path %></li>
+      <li><%= link_to "Index", wikis_path %></li>
       <li><%= link_to "New Wiki", new_wiki_path %></li>
       <li><form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -28,11 +28,8 @@
     <% else %>
       <%= link_to "Sign In", new_user_session_path %> or
       <%= link_to "Sign Up", new_user_registration_path %>
-  </div>
   <% end %>
   </div>
-</div>
-
 
   <% if flash[:notice] %>
     <div class="alert alert-success">
@@ -53,5 +50,6 @@
 
 <%= yield %>
 
+</div>
 </body>
 </html>
