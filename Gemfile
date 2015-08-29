@@ -41,10 +41,6 @@ gem 'pundit'
 gem 'figaro'
 gem 'pry', '~> 0.10.1'
 
-# Elastic Search - https://github.com/elastic/elasticsearch-ruby
-gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-
 group :production do
   # PostGreSQL
   gem 'pg'
