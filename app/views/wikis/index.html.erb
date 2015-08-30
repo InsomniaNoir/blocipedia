@@ -1,4 +1,6 @@
 <h1>Wiki List</h1>
 <% @wikis.each do |wiki| %>
-  <p><%= link_to wiki.title, wikis_path(wiki.id) %></p>
+  <% if policy(Wiki.new).create? %>
+  <p><%= link_to wiki.title, wiki_path(wiki.id) %></p>
+  <% end %>
 <% end %>
