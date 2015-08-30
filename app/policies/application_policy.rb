@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.present?
+    user.present? && -> (user) { user ? all : where(private: false) }
   end
 
   def edit?
