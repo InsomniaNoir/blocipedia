@@ -41,6 +41,7 @@ gem 'pundit'
 gem 'figaro'
 gem 'pry', '~> 0.10.1'
 gem 'faker'
+gem 'stripe'
 
 group :production do
   # PostGreSQL
