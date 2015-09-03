@@ -1,10 +1,4 @@
 class User < ActiveRecord::Base
-  enum role: [:user, :admin, :premium]
-  after_initialize :set_default_role
-
-  def set_default_role
-    role ||= :user
-  end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -12,6 +6,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :wikis
+  after_initialize :set_default_role
+
+  def standard?
+    role == 'standard'
+  end
 
   def admin?
     role == 'admin'
@@ -19,5 +18,15 @@ class User < ActiveRecord::Base
 
   def premium?
     role == 'premium'
+  end
+
+  def set_default_role
+    self.role ||= 'standard'
+  end
+
+  def upgrade_account(user)
+    user.role = 'standard'
+    user.save
+    user.wikis.where(private: true).update_all(private: false)
   end
 end
