@@ -13,6 +13,11 @@
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "Index", wikis_path %></li>
       <li><%= link_to "New Wiki", new_wiki_path %></li>
+        <% if current_user && current_user.stripe_id.nil? %>
+          <li><%= link_to "Upgrade!", new_charge_path %></li>
+          <% else %>
+          <li><%= link_to "Downgrade... Loser", downgrade_path, method: :put %>
+        <% end %>
       <li><form class="navbar-form navbar-left" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search!">
@@ -21,7 +26,6 @@
         </div>
       </form>
       </li>
-      <li><%= link_to "Become a Premium User!", new_charge_path %></li>
     </ul>
   <div class="navbar-text navbar-right" id="whodat">
     <% if current_user %>

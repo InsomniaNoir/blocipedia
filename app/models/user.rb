@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :wikis
-  after_initialize :set_default_role
 
   def standard?
     role == 'standard'
@@ -18,15 +17,5 @@ class User < ActiveRecord::Base
 
   def premium?
     role == 'premium'
-  end
-
-  def set_default_role
-    self.role ||= 'standard'
-  end
-
-  def upgrade_account(user)
-    user.role = 'standard'
-    user.save
-    user.wikis.where(private: true).update_all(private: false)
   end
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :wikis
   resources :charges, only: [:new, :create]
+  put 'downgrade' => 'charges#downgrade'
   get 'welcome/index'
 
   root to: 'welcome#index'
