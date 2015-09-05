@@ -6,11 +6,11 @@
         <%= f.label :title %>
         <%= f.text_field :title, class: 'form-control', placeholder: "Wiki Title Here" %>
       </div>
-      <%= render partial: 'wikis/form', locals: { wiki: Wiki.new } %>
       <div class="form-group">
         <%= f.label :body %>
         <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: 'Talk about what you want' %>
       </div>
+      <%= render partial: 'wikis/form', locals: { wiki: Wiki.new } %>
       <div class="form-group">
         <%= f.submit "Save", class: 'btn btn-success' %>
       </div>
