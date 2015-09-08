@@ -18,4 +18,11 @@ class User < ActiveRecord::Base
   def premium?
     role == 'premium'
   end
+
+  def downgrade_wikis
+    self.wikis.each do |wiki|
+      wiki.update_attributes(private: false)
+    end
+  end
+
 end

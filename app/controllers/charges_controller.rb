@@ -35,6 +35,7 @@ class ChargesController < ApplicationController
     customer = Stripe::Customer.retrieve(current_user.stripe_id)
     sub = customer.subscriptions.first.delete
     current_user.update_attributes(role: "standard", stripe_id: nil)
+    current_user.downgrade_wikis
     redirect_to root_path
   end
 end
