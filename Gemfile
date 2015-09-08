@@ -42,6 +42,7 @@ gem 'figaro'
 gem 'pry', '~> 0.10.1'
 gem 'faker'
 gem 'stripe'
+gem 'redcarpet'
 
 group :production do
   # PostGreSQL
