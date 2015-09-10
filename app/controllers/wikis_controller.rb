@@ -20,7 +20,7 @@ class WikisController < ApplicationController
       redirect_to @wiki
     else
       flash[:error] = "Maybe you should take up a new hobby... like knitting!"
-      redirect_to new_wiki_path
+      render :new
     end
   end
 
