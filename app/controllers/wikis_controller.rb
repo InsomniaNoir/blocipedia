@@ -1,4 +1,6 @@
 class WikisController < ApplicationController
+  before_action :authenticate_user!, :except => [:index]
+  
   def index
     @wikis = Wiki.all
   end

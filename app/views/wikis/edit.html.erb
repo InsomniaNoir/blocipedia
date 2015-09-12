@@ -3,12 +3,6 @@
 <div class="row">
   <div class="col-md-8">
     <%= render partial: 'wikis/form', locals: { wiki: @wiki } %>
-    <div class="form-group">
-      <% form_for @user do |f| %>
-      <%= f.label :user %>
-      <%= f.select(:user, options_for_select(@users.all), {}, { class: 'form-control' }) %>
-    </div>
-   <% end %>
   </div>
 </div>
 
