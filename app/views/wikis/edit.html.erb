@@ -6,10 +6,12 @@
   </div>
 </div>
 
-<div class="form-group">
-  <%= form_tag wiki_collaborator_path(@wiki) do %>
-    <% users_array = User.all.map { |u| [u.name, u.id]} %>
-    <%= select_tag('users', options_for_select(users_array, :selected => params[:users]), multiple: true) %>
-    <%= submit_tag('Add Collaborator', name: 'collaborators[submit]') %>
-  <% end %>
-</div>
+<% if true %>
+  <div class="form-group">
+    <%= form_tag wiki_create_collaborators_path(@wiki) do %>
+      <% users_array = User.all.map { |u| [u.name, u.id]} %>
+      <%= select_tag('users', options_for_select(users_array, :selected => params[:users]), multiple: true) %>
+      <%= submit_tag('Add Collaborator', name: 'collaborators[submit]') %>
+    <% end %>
+  </div>
+<% end %>

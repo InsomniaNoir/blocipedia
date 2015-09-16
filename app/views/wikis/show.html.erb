@@ -9,3 +9,11 @@
 <% if policy(@wiki).destroy? %>
   <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
 <% end %>
+
+<h2>Collaborators</h2>
+<% @wiki.collaborators.each do |collaborator| %>
+<p>
+  <%= collaborator.user.name %>
+  <%= link_to "Remove Collaborator", wikis_destroy_collaborators_path %>
+</p>
+<% end %>

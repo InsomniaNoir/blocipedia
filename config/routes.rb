@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   resources :wikis do
     resources :collaborators
+    post :create_collaborators
+    delete :destroy_collaborators
   end
-  
+
   resources :charges, only: [:new, :create]
   put 'downgrade' => 'charges#downgrade'
   get 'welcome/index'

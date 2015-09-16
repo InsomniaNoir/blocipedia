@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
-  
+
   def index
     @wikis = Wiki.all
   end
@@ -12,6 +12,22 @@ class WikisController < ApplicationController
   def new
     @wiki = Wiki.new
     authorize @wiki
+  end
+
+  def create_collaborators
+    wiki = Wiki.find(params[:wiki_id])
+    params[:users].each do |user|
+      # check if there is  collaborator obj for user
+      Collaborator.where(wiki: wiki, user: User.find(user.to_i)).first_or_create
+    end
+    redirect_to wiki
+  end
+
+  def destroy_collaborators
+    wiki = Wiki.find(params[:wiki_id])
+    params[:users].each do |user|
+      Collaborator.where(wiki: wiki, user: User.find(user.to_i)).destroy
+    end
   end
 
   def create
@@ -28,6 +44,7 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @collaborators = @wiki.collaborators
     authorize @wiki
   end
 
