@@ -14,6 +14,6 @@
 <% @wiki.collaborators.each do |collaborator| %>
 <p>
   <%= collaborator.user.name %>
-  <%= link_to "Remove Collaborator", wikis_destroy_collaborators_path %>
+  <%= link_to "Remove Collaborator", wiki_destroy_collaborators_path(@wiki, {collaborator: collaborator.id}), method: :delete %>
 </p>
 <% end %>

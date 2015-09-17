@@ -25,9 +25,9 @@ class WikisController < ApplicationController
 
   def destroy_collaborators
     wiki = Wiki.find(params[:wiki_id])
-    params[:users].each do |user|
-      Collaborator.where(wiki: wiki, user: User.find(user.to_i)).destroy
-    end
+    collaborator = Collaborator.find(params[:collaborator])
+    collaborator.destroy
+    redirect_to wiki
   end
 
   def create

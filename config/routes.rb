@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     resources :collaborators
     post :create_collaborators
     delete :destroy_collaborators
-  end
+  
+end
 
   resources :charges, only: [:new, :create]
   put 'downgrade' => 'charges#downgrade'
